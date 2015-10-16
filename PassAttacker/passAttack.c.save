@@ -37,22 +37,7 @@ int main(int argc, char **argv)
 
 //    fopen("~/C-Algorithms/PassAttacker/a_input.in", "r");
 
-    find_num_possible(1,1);
-    find_num_possible(4,3);
-    find_num_possible(5,5);
-    find_num_possible(7,7);
-    find_num_possible(7,4);
-    find_num_possible(4,4);
-    find_num_possible(6,6);
-    find_num_possible(7,1);
-    find_num_possible(2,1);
-    find_num_possible(6,1);
-    find_num_possible(4,2);
-    find_num_possible(5,1);
-    find_num_possible(7,6);
-    find_num_possible(5,5);
-    find_num_possible(4,3);
-
+    find_num_possible(15, 15);
 
     return 0;
 }
@@ -84,9 +69,8 @@ int find_num_possible(int m, int n)
     //Loop for each level in the tree
     for(i = 0; i < m; i++){
         create_children(m, n, i+1, nodetree+i, nodetree+i+1);
-        //printf("Level %d has %d nodes in it\n", i+1, nodetree[i].count*n);
+        printf("Level %d has %d nodes in it\n", i+1, nodetree[i].count*n);
     }
-    printf("%d, %d: %d\n", m, n, nodetree[i-1].count*n);
 
 //    create_children(m, n, 1, nodetree, nodetree+1);
 //    printf("parents has %d node(s), children has %d node(s)\n", nodetree[0].count, nodetree[1].count);
@@ -149,7 +133,7 @@ void add_node(int level, int *pattern, int exhausted, nodelist *list)
 
     node *newnode = malloc( sizeof(node) );
     newnode->level = level;
-    newnode->pattern = pattern;
+ls    newnode->pattern = pattern;
     newnode->exhausted = exhausted;
     newnode->next = (struct Node*)prevhead;
 
