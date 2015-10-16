@@ -20,7 +20,7 @@ typedef struct Node{
 
 /*Function declarations*******************************************************/
 
-//void create_children(struct NodeList *parents, struct NodeList *children);
+void create_children(int m, int n, int level, nodelist *parents, nodelist *children);
 void add_node(int level, char *pattern, int exhausted, nodelist *list);
 int check_exhausted(int m, int n, char *pattern);
 int find_num_possible(int m, int n);
@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     //Call find_num_possible for every input pair
     //print formated output for each test case
 
-    
+    find_num_possible(5, 3);
 
     return 0;
 }
@@ -69,7 +69,35 @@ int find_num_possible(int m, int n)
         //printf("Level %d has %d nodes in it\n", i+1, nodetree[i].count);
     }
 
+    create_children(m, n, 1, nodetree, nodetree+1);
+    printf("parents has %d node(s), children has %d node(s)\n", nodetree[0].count, nodetree[1].count);
+
     return 0;
+}
+
+
+
+void create_children(int m, int n, int level, nodelist *parents, nodelist *children)
+{
+    //If node isn't exhausted, add N children to children list
+    node *current;
+    int i;
+    char *childpattern;
+    for(current = parents->head; current->next != NULL; current = current->next){
+        if(!current->exhausted){
+            //Generation children for each of N
+            for(i = 0; i < n; i++){
+                //Each child gets a new pattern with i at the end, and exhausted is checked
+                childpattern = make_pattern(pattern, i);
+                add_node(level, childpattern, check_exhausted(m, n, childpattern), children);
+            }
+        }else{
+            for(i = 0; i < (n - (level - rindex)); i++){
+                //Each child gets n - (level - rindex) children
+                add_node(level, NULL, 1, children);
+            }
+        }
+    }
 }
 
 
