@@ -10,3 +10,8 @@ There's probably a simple numerical method to solve the question...
 #####Remarks
 I was planning on adding actual error checking and tests to my first attempt (for practice) 
 until I realized it was going on the wrong track.
+
+#####Mathematics !
+These attemps are recursive because they were written before I had knowledge of discrete counting techniques. This problem can be solved relatively easily using set arithmetic. 
+We want to count all permutations of a password given its length M and the number of unique characters in it N. To calculate this problem, we do the following: 
+Find all possible permutations of passwords (N^M). These are the passwords that use from 0 - (M-1) times each character. Then subtract all passwords that only use 1 unique character (There are N choose 1 of these). Then subtract all those that only use 2 unique characters (N choose 2 * 2^M). Then those that only use 3 unique characters (N choose 3 * 3^M) ... Then those that only use N-1 characters (N choose N-1 * (N-1)^M).
