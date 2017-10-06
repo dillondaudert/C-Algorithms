@@ -1,4 +1,4 @@
-##Maximum Subarray Algorithm
+# Maximum Subarray Algorithm
 
 From the Introduction to Algorithms book, 
 a recursive, divide-and-conquer algorithm with efficiency big-theta (n^2) was provided, 
@@ -6,7 +6,7 @@ and hints were given to develop the following:
 
 The algorithm solves the maximum subarray problem in linear time, big-theta (n).
 
-####Pseudocode
+## Pseudocode
 
 The procedure FIND_MAX_SUBARRAY takes the array A and its length, A.length, and returns
 the left index, right index and the sum of the maximum subarray within A.
